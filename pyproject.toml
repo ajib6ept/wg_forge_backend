@@ -8,6 +8,7 @@ authors = ["ajib6ept <asalbert@narod.ru>"]
 python = "^3.8"
 Django = "^4.0.5"
 psycopg2 = "^2.9.3"
+prettytable = "^3.3.0"
 
 [tool.poetry.dev-dependencies]
 black = {version = "^22.3.0", allow-prereleases = true}

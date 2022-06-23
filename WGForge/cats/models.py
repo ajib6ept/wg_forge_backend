@@ -2,8 +2,8 @@ from django.db import models
 
 
 class CatColorsInfo(models.Model):
-    color = models.TextField(unique=True, blank=True, null=True)
-    count = models.IntegerField(blank=True, null=True)
+    color = models.TextField(primary_key=True)
+    count = models.IntegerField()
 
     class Meta:
         managed = False
@@ -11,7 +11,7 @@ class CatColorsInfo(models.Model):
 
 
 class Cats(models.Model):
-    name = models.CharField(primary_key=True, max_length=-1)
+    name = models.CharField(primary_key=True, max_length=100)
     color = models.TextField(blank=True, null=True)
     tail_length = models.IntegerField(blank=True, null=True)
     whiskers_length = models.IntegerField(blank=True, null=True)
