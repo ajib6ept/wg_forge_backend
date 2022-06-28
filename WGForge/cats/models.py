@@ -23,7 +23,7 @@ class Cats(models.Model):
 
 class CatsStat(models.Model):
     tail_length_mean = models.DecimalField(
-        max_digits=65535, decimal_places=65535, blank=True, null=True
+        max_digits=65535, decimal_places=65535, primary_key=True
     )
     tail_length_median = models.DecimalField(
         max_digits=65535, decimal_places=65535, blank=True, null=True
