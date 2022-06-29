@@ -4,6 +4,9 @@ cat_colors_stat:
 cat_stats:
 	poetry run python manage.py cat_stats
 
+install:
+	poetry install
+
 lint:
 	poetry run flake8 WGForge --exclude=WGForge/settings.py
 
