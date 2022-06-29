@@ -1,9 +1,7 @@
-from django.shortcuts import render
 from django.http import HttpResponse
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
+from django.views.decorators.http import require_http_methods
 
 
-@api_view(("GET",))
+@require_http_methods(["GET"])
 def ping(request):
-    return Response(data="Cats Service. Version 0.1")
+    return HttpResponse("Cats Service. Version 0.1")

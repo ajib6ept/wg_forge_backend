@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
-
+import sys
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "WGForge.cats",
-    "rest_framework",
 ]
 
 MIDDLEWARE = [
@@ -77,16 +76,42 @@ WSGI_APPLICATION = "WGForge.wsgi.application"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("POSTGRES_DB", "wg_forge_db"),
-        "USER": os.getenv("POSTGRES_USER", "wg_forge"),
-        "PASSWORD": os.getenv("POSTGRES_PASSWORD", "42a"),
-        "HOST": os.getenv("POSTGRES_HOST", "localhost"),
-        "PORT": os.getenv("POSTGRES_PORT", "5432"),
-    },
-}
+is_test = "manage.py" in sys.argv and "test" in sys.argv
+
+if is_test:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.getenv("POSTGRES_DB", "wg_forge_db"),
+            "USER": os.getenv("POSTGRES_USER", "wg_forge"),
+            "PASSWORD": os.getenv("POSTGRES_PASSWORD", "42a"),
+            "HOST": os.getenv("POSTGRES_HOST", "localhost"),
+            "PORT": os.getenv("POSTGRES_PORT", "5432"),
+        }
+    }
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": os.getenv("POSTGRES_DB", "wg_forge_db"),
+#         "USER": os.getenv("POSTGRES_USER", "wg_forge"),
+#         "PASSWORD": os.getenv("POSTGRES_PASSWORD", "42a"),
+#         "HOST": os.getenv("POSTGRES_HOST", "localhost"),
+#         "PORT": os.getenv("POSTGRES_PORT", "5432"),
+#         "TEST": {"MIRROR": "test22"},
+#     },
+#     "test22": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+#     },
+# }
 
 
 # Password validation

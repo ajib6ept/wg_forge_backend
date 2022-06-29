@@ -36,7 +36,7 @@ class Command(BaseCommand):
         if _count % 2 == 1:
             result = values[int(round(_count / 2))]
         else:
-            result = sum(values[_count / 2 - 1 : _count / 2 + 1]) / 2.0
+            result = sum(values[_count / 2 - 1 : _count / 2 + 1]) / 2.0  # noqa
         return result
 
     def count_moda_value(self, qs, item):
