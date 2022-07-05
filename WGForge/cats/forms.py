@@ -1,3 +1,5 @@
+import json
+
 from django import forms
 
 from .models import Cats
@@ -25,3 +27,14 @@ class CatsSearchForm(forms.Form):
                 "Sorting is possible only if there is an attribute"
             )
         return cleaned_data
+
+
+class CatCreateForm(forms.ModelForm):
+    class Meta:
+        model = Cats
+        fields = ["name", "color", "tail_length", "whiskers_length"]
+
+    def __init__(self, *args, **kwargs):
+        new_data = json.loads(kwargs["data"])
+        kwargs["data"] = new_data
+        super(CatCreateForm, self).__init__(*args, **kwargs)
