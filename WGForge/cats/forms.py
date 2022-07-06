@@ -35,6 +35,9 @@ class CatCreateForm(forms.ModelForm):
         fields = ["name", "color", "tail_length", "whiskers_length"]
 
     def __init__(self, *args, **kwargs):
-        new_data = json.loads(kwargs["data"])
+        try:
+            new_data = json.loads(kwargs["data"])
+        except json.decoder.JSONDecodeError:
+            new_data = {}
         kwargs["data"] = new_data
         super(CatCreateForm, self).__init__(*args, **kwargs)

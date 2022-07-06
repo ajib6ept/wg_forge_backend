@@ -1,3 +1,4 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 
@@ -13,8 +14,16 @@ class CatColorsInfo(models.Model):
 class Cats(models.Model):
     name = models.CharField(primary_key=True, max_length=100)
     color = models.TextField(blank=True, null=True)
-    tail_length = models.IntegerField(blank=True, null=True)
-    whiskers_length = models.IntegerField(blank=True, null=True)
+    tail_length = models.IntegerField(
+        blank=True,
+        null=True,
+        validators=[MaxValueValidator(100), MinValueValidator(1)],
+    )
+    whiskers_length = models.IntegerField(
+        blank=True,
+        null=True,
+        validators=[MaxValueValidator(100), MinValueValidator(1)],
+    )
 
     class Meta:
         managed = False
