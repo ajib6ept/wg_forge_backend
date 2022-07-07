@@ -13,7 +13,7 @@ from .models import Cats
 
 
 @require_http_methods(["GET"])
-def ping(request):
+def ping_service(request):
     return HttpResponse("Cats Service. Version 0.1")
 
 
