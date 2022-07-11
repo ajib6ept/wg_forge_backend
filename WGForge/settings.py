@@ -49,6 +49,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "WGForge.middleware.CatLimitViewMiddleware",
 ]
 
 ROOT_URLCONF = "WGForge.urls"
@@ -154,3 +155,10 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CAT_VIEW_LIMIT = {
+    "PATH": "/cats",
+    "METHOD": "GET",
+    "LIMIT": "600/m",
+    "CACHE_NAME": "cat_view_limit",
+}
