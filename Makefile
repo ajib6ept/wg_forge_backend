@@ -15,3 +15,8 @@ start_server:
 
 test:
 	poetry run python manage.py test
+
+test_coverage:
+	poetry run coverage run --source='WGForge' manage.py test
+	poetry run coverage xml
+	poetry run coverage report

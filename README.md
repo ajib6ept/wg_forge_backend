@@ -1,5 +1,44 @@
 # Тестовое задание WG Forge (Backend)
 
+[![Actions Status](https://github.com/ajib6ept/wg_forge_backend/workflows/cats-code/badge.svg)](https://github.com/ajib6ept/wg_forge_backend/actions) [![Maintainability](https://api.codeclimate.com/v1/badges/eb4b383df6cebea31b26/maintainability)](https://codeclimate.com/github/ajib6ept/wg_forge_backend/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/eb4b383df6cebea31b26/test_coverage)](https://codeclimate.com/github/ajib6ept/wg_forge_backend/test_coverage)
+
+## Решение 
+
+Предварительно необходимо установить [docker-compose](https://docs.docker.com/compose/install/), склонировать к себе исходный код и запустить приложение
+```
+docker-compose up -d
+```
+
+1-е задание
+```
+make cat_colors_stat
+```
+2-е задание
+```
+make cat_stats
+```
+3-е, задание
+```
+curl -X GET http://localhost:8080/ping
+```
+
+4-е задание
+```
+curl -X GET http://localhost:8080/cats
+```
+
+5-е задание
+```
+curl -X POST http://localhost:8080/cat \
+-d "{\"name\": \"Tihon\", \"color\": \"red & white\", \"tail_length\": 15, \"whiskers_length\": 12}"
+```
+
+### Демонстрация работы 
+
+[![asciicast](https://asciinema.org/a/fz4lNuVxzGCSIC8QuaZENfnPa.svg)](https://asciinema.org/a/fz4lNuVxzGCSIC8QuaZENfnPa)
+
+## Описание
+
 Тестовое задание можно выполнить на любом языке программирования из списка:
 - Python 3
 - Ruby
