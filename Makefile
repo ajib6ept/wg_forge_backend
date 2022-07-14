@@ -1,8 +1,8 @@
 cat_colors_stat:
-	poetry run python manage.py cat_colors_stat
+	@docker-compose -f docker-compose.yml exec web python manage.py cat_colors_stat
 
 cat_stats:
-	poetry run python manage.py cat_stats
+	@docker-compose -f docker-compose.yml exec web python manage.py cat_stats
 
 install:
 	poetry install
